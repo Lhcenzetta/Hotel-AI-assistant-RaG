@@ -1,0 +1,242 @@
+[
+  {
+    "service_id": "SERV-001",
+    "service_name": "Spa Access",
+    "price_eur": 84,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-002",
+    "service_name": "Room Service",
+    "price_eur": 88,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-003",
+    "service_name": "Airport Transfer",
+    "price_eur": 108,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-004",
+    "service_name": "Conference Room Rental",
+    "price_eur": 99,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-005",
+    "service_name": "Room Service",
+    "price_eur": 95,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-006",
+    "service_name": "Airport Transfer",
+    "price_eur": 58,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-007",
+    "service_name": "Spa Access",
+    "price_eur": 62,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-008",
+    "service_name": "Surf Lessons",
+    "price_eur": 64,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-009",
+    "service_name": "Surf Lessons",
+    "price_eur": 74,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-010",
+    "service_name": "Surf Lessons",
+    "price_eur": 69,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-011",
+    "service_name": "Surf Lessons",
+    "price_eur": 12,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-012",
+    "service_name": "Hammam Session",
+    "price_eur": 98,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-013",
+    "service_name": "Surf Lessons",
+    "price_eur": 78,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-014",
+    "service_name": "Airport Transfer",
+    "price_eur": 6,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-015",
+    "service_name": "Room Service",
+    "price_eur": 50,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-016",
+    "service_name": "Conference Room Rental",
+    "price_eur": 110,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-017",
+    "service_name": "Hammam Session",
+    "price_eur": 51,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-018",
+    "service_name": "Surf Lessons",
+    "price_eur": 114,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-019",
+    "service_name": "Hammam Session",
+    "price_eur": 24,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-020",
+    "service_name": "Conference Room Rental",
+    "price_eur": 116,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-021",
+    "service_name": "Private Beach Access",
+    "price_eur": 89,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-022",
+    "service_name": "Laundry Service",
+    "price_eur": 112,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-023",
+    "service_name": "City Tour Booking",
+    "price_eur": 30,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-024",
+    "service_name": "Surf Lessons",
+    "price_eur": 27,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-025",
+    "service_name": "City Tour Booking",
+    "price_eur": 106,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-026",
+    "service_name": "Laundry Service",
+    "price_eur": 95,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-027",
+    "service_name": "Airport Transfer",
+    "price_eur": 108,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-028",
+    "service_name": "Surf Lessons",
+    "price_eur": 25,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-029",
+    "service_name": "Room Service",
+    "price_eur": 107,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-030",
+    "service_name": "City Tour Booking",
+    "price_eur": 24,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-031",
+    "service_name": "Private Beach Access",
+    "price_eur": 54,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-032",
+    "service_name": "Airport Transfer",
+    "price_eur": 111,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-033",
+    "service_name": "Hammam Session",
+    "price_eur": 25,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-034",
+    "service_name": "Room Service",
+    "price_eur": 112,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-035",
+    "service_name": "Room Service",
+    "price_eur": 85,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-036",
+    "service_name": "Spa Access",
+    "price_eur": 24,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-037",
+    "service_name": "Breakfast Buffet",
+    "price_eur": 78,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-038",
+    "service_name": "Airport Transfer",
+    "price_eur": 61,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-039",
+    "service_name": "Conference Room Rental",
+    "price_eur": 19,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  },
+  {
+    "service_id": "SERV-040",
+    "service_name": "Room Service",
+    "price_eur": 78,
+    "description": "Service available for hotel guests. Booking can be done at the reception or via the hotel assistant."
+  }
+]

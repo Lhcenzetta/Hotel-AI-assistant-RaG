@@ -1,0 +1,482 @@
+[
+  {
+    "room_id": "RM-001",
+    "room_type": "Junior Suite",
+    "capacity": 3,
+    "price_per_night_eur": 230,
+    "view": "Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-002",
+    "room_type": "Family Suite",
+    "capacity": 3,
+    "price_per_night_eur": 96,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-003",
+    "room_type": "Deluxe Room",
+    "capacity": 3,
+    "price_per_night_eur": 161,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-004",
+    "room_type": "Junior Suite",
+    "capacity": 3,
+    "price_per_night_eur": 169,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-005",
+    "room_type": "Executive Suite",
+    "capacity": 2,
+    "price_per_night_eur": 188,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-006",
+    "room_type": "Standard Room",
+    "capacity": 2,
+    "price_per_night_eur": 130,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-007",
+    "room_type": "Standard Room",
+    "capacity": 4,
+    "price_per_night_eur": 170,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-008",
+    "room_type": "Executive Suite",
+    "capacity": 3,
+    "price_per_night_eur": 193,
+    "view": "Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-009",
+    "room_type": "Deluxe Room",
+    "capacity": 3,
+    "price_per_night_eur": 131,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-010",
+    "room_type": "Junior Suite",
+    "capacity": 4,
+    "price_per_night_eur": 226,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-011",
+    "room_type": "Deluxe Room",
+    "capacity": 4,
+    "price_per_night_eur": 84,
+    "view": "Pool View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-012",
+    "room_type": "Family Suite",
+    "capacity": 2,
+    "price_per_night_eur": 245,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-013",
+    "room_type": "Superior Room",
+    "capacity": 4,
+    "price_per_night_eur": 169,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-014",
+    "room_type": "Executive Suite",
+    "capacity": 2,
+    "price_per_night_eur": 133,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-015",
+    "room_type": "Deluxe Room",
+    "capacity": 4,
+    "price_per_night_eur": 141,
+    "view": "Pool View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-016",
+    "room_type": "Standard Room",
+    "capacity": 2,
+    "price_per_night_eur": 122,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-017",
+    "room_type": "Family Suite",
+    "capacity": 3,
+    "price_per_night_eur": 173,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-018",
+    "room_type": "Executive Suite",
+    "capacity": 3,
+    "price_per_night_eur": 112,
+    "view": "Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-019",
+    "room_type": "Superior Room",
+    "capacity": 3,
+    "price_per_night_eur": 239,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-020",
+    "room_type": "Deluxe Room",
+    "capacity": 3,
+    "price_per_night_eur": 84,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-021",
+    "room_type": "Family Suite",
+    "capacity": 4,
+    "price_per_night_eur": 74,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-022",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 171,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-023",
+    "room_type": "Standard Room",
+    "capacity": 2,
+    "price_per_night_eur": 73,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-024",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 130,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-025",
+    "room_type": "Family Suite",
+    "capacity": 4,
+    "price_per_night_eur": 124,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-026",
+    "room_type": "Junior Suite",
+    "capacity": 2,
+    "price_per_night_eur": 204,
+    "view": "Pool View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-027",
+    "room_type": "Superior Room",
+    "capacity": 4,
+    "price_per_night_eur": 205,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-028",
+    "room_type": "Family Suite",
+    "capacity": 2,
+    "price_per_night_eur": 70,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-029",
+    "room_type": "Deluxe Room",
+    "capacity": 4,
+    "price_per_night_eur": 123,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-030",
+    "room_type": "Family Suite",
+    "capacity": 4,
+    "price_per_night_eur": 225,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-031",
+    "room_type": "Superior Room",
+    "capacity": 4,
+    "price_per_night_eur": 224,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-032",
+    "room_type": "Deluxe Room",
+    "capacity": 3,
+    "price_per_night_eur": 125,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-033",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 74,
+    "view": "Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-034",
+    "room_type": "Standard Room",
+    "capacity": 3,
+    "price_per_night_eur": 86,
+    "view": "Pool View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-035",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 95,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-036",
+    "room_type": "Standard Room",
+    "capacity": 3,
+    "price_per_night_eur": 123,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-037",
+    "room_type": "Superior Room",
+    "capacity": 4,
+    "price_per_night_eur": 167,
+    "view": "City View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-038",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 147,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-039",
+    "room_type": "Family Suite",
+    "capacity": 4,
+    "price_per_night_eur": 141,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-040",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 220,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-041",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 85,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-042",
+    "room_type": "Superior Room",
+    "capacity": 4,
+    "price_per_night_eur": 224,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-043",
+    "room_type": "Executive Suite",
+    "capacity": 2,
+    "price_per_night_eur": 130,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-044",
+    "room_type": "Junior Suite",
+    "capacity": 2,
+    "price_per_night_eur": 90,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-045",
+    "room_type": "Junior Suite",
+    "capacity": 4,
+    "price_per_night_eur": 77,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-046",
+    "room_type": "Family Suite",
+    "capacity": 4,
+    "price_per_night_eur": 210,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-047",
+    "room_type": "Executive Suite",
+    "capacity": 3,
+    "price_per_night_eur": 138,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-048",
+    "room_type": "Junior Suite",
+    "capacity": 2,
+    "price_per_night_eur": 102,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-049",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 225,
+    "view": "Pool View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-050",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 221,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-051",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 205,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-052",
+    "room_type": "Junior Suite",
+    "capacity": 3,
+    "price_per_night_eur": 220,
+    "view": "Garden View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-053",
+    "room_type": "Standard Room",
+    "capacity": 4,
+    "price_per_night_eur": 232,
+    "view": "Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-054",
+    "room_type": "Junior Suite",
+    "capacity": 2,
+    "price_per_night_eur": 129,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-055",
+    "room_type": "Junior Suite",
+    "capacity": 4,
+    "price_per_night_eur": 113,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-056",
+    "room_type": "Junior Suite",
+    "capacity": 3,
+    "price_per_night_eur": 137,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-057",
+    "room_type": "Executive Suite",
+    "capacity": 2,
+    "price_per_night_eur": 142,
+    "view": "Sea View",
+    "breakfast_included": false
+  },
+  {
+    "room_id": "RM-058",
+    "room_type": "Superior Room",
+    "capacity": 2,
+    "price_per_night_eur": 184,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-059",
+    "room_type": "Executive Suite",
+    "capacity": 3,
+    "price_per_night_eur": 92,
+    "view": "City View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-060",
+    "room_type": "Standard Room",
+    "capacity": 2,
+    "price_per_night_eur": 189,
+    "view": "Sea View",
+    "breakfast_included": false
+  }
+]
