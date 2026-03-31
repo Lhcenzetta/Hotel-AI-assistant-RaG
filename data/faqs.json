@@ -1,0 +1,22 @@
+[
+  {
+    "faq_id": 1,
+    "question": "Is there a swimming pool at the hotel?",
+    "answer": "Yes, we have both an outdoor infinity pool overlooking the ocean and a heated indoor pool within our spa complex."
+  },
+  {
+    "faq_id": 2,
+    "question": "Do you offer vegetarian or vegan options in your restaurants?",
+    "answer": "Absolutely. All our dining venues offer a variety of vegetarian and vegan dishes, including traditional Moroccan tagines adapted for plant-based diets."
+  },
+  {
+    "faq_id": 3,
+    "question": "Is the hotel accessible for guests with reduced mobility?",
+    "answer": "Yes, Atlas Breeze Hotel & Spa is fully accessible. We have ramps, elevators to all floors, and specially designed rooms for guests with mobility needs."
+  },
+  {
+    "faq_id": 4,
+    "question": "Can I book excursions through the hotel?",
+    "answer": "Yes, our concierge desk can help you book various excursions, including desert trips, surfing lessons, and visits to Paradise Valley."
+  }
+]
