@@ -1,0 +1,26 @@
+[
+  {
+    "service_id": "SERV-001",
+    "service_name": "Traditional Hammam",
+    "price_eur": 60,
+    "description": "Authentic Moroccan steam bath experience with black soap and exfoliation."
+  },
+  {
+    "service_id": "SERV-002",
+    "service_name": "Airport Shuttle",
+    "price_eur": 35,
+    "description": "Private transfer from Agadir Al-Massira Airport to the hotel."
+  },
+  {
+    "service_id": "SERV-003",
+    "service_name": "Guided City Tour",
+    "price_eur": 45,
+    "description": "A 4-hour guided tour of Agadir's main attractions including the Kasbah and Souk El Had."
+  },
+  {
+    "service_id": "SERV-004",
+    "service_name": "Room Service",
+    "price_eur": 15,
+    "description": "24/7 in-room dining service with a selection of local and international dishes."
+  }
+]

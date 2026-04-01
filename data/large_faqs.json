@@ -1,0 +1,27 @@
+[
+  {
+    "faq_id": 1,
+    "question": "Do you have Wi-Fi?",
+    "answer": "Yes, free high-speed Wi-Fi is available in all rooms and public areas. Our staff is available 24/7 to assist guests with additional needs."
+  },
+  {
+    "faq_id": 2,
+    "question": "What time is check-in?",
+    "answer": "Check-in starts at 15:00. Early check-in may be available depending on room availability. Our staff is available 24/7 to assist guests with additional needs."
+  },
+  {
+    "faq_id": 3,
+    "question": "Is breakfast included?",
+    "answer": "Breakfast is included in most room packages and served as a buffet. Our staff is available 24/7 to assist guests with additional needs."
+  },
+  {
+    "faq_id": 4,
+    "question": "Do you provide airport transfer?",
+    "answer": "Yes, airport transfer from Agadir Al Massira Airport is available for an additional fee. Our staff is available 24/7 to assist guests with additional needs."
+  },
+  {
+    "faq_id": 5,
+    "question": "What time is check-out?",
+    "answer": "Check-out is until 12:00. Late check-out can be requested at the reception. Our staff is available 24/7 to assist guests with additional needs."
+  }
+]

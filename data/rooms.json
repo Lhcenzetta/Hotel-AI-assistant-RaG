@@ -1,0 +1,34 @@
+[
+  {
+    "room_id": "RM-101",
+    "room_type": "Standard Room",
+    "capacity": 2,
+    "price_per_night_eur": 120,
+    "view": "Garden View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-201",
+    "room_type": "Deluxe Room",
+    "capacity": 2,
+    "price_per_night_eur": 180,
+    "view": "Partial Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-301",
+    "room_type": "Junior Suite",
+    "capacity": 3,
+    "price_per_night_eur": 250,
+    "view": "Full Sea View",
+    "breakfast_included": true
+  },
+  {
+    "room_id": "RM-401",
+    "room_type": "Executive Suite",
+    "capacity": 4,
+    "price_per_night_eur": 450,
+    "view": "Panoramic Ocean View",
+    "breakfast_included": true
+  }
+]

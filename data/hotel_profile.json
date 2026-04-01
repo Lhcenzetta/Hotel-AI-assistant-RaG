@@ -1,0 +1,23 @@
+{
+  "hotel_name": "Atlas Breeze Hotel & Spa",
+  "location": "Agadir, Morocco",
+  "description": "A luxurious beachfront sanctuary where the Atlas Mountains meet the Atlantic Ocean. Atlas Breeze Hotel & Spa offers a perfect blend of traditional Moroccan hospitality and modern luxury, featuring world-class spa facilities, gourmet dining, and breathtaking sea views.",
+  "amenities": [
+    "Private Beach Access",
+    "Full-service Thalassotherapy Spa",
+    "Infinity Outdoor Pool",
+    "Heated Indoor Pool",
+    "Fitness Center",
+    "Kids Club",
+    "Free High-speed Wi-Fi",
+    "24-hour Concierge",
+    "Valet Parking"
+  ],
+  "contact": {
+    "phone": "+212 528 123 456",
+    "email": "info@atlasbreezehotel.com",
+    "address": "Secteur Touristique, Boulevard du 20 Août, Agadir 80000, Morocco"
+  },
+  "check_in_time": "15:00",
+  "check_out_time": "12:00"
+}
