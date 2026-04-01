@@ -1,37 +1,60 @@
-from retriever import query_chroma
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
-import os 
-from dotenv import load_dotenv
+from backend.config import LLM_MODEL, GOOGLE_API_KEY
 
-load_dotenv()
-
-def Handle_query(query, revalent_docs):
-    context = "\n\n".join([doc.page_content for doc in revalent_docs])
-    promt = f""" based on the following document , please answer this  question {query} documents:
-    {context}
-    please provide a clear helpful answer using only the information from these documents . if you can't find the answer in
-    documents . say "i don't have anough information based on the documentation please try other question
-    """
-    llm  = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
-        temperature=0.3,
+class HotelGenerator:
+    def __init__(self):
+        self.llm = ChatGoogleGenerativeAI(
+            model=LLM_MODEL,
+            google_api_key=GOOGLE_API_KEY,
+            temperature=0,
         )
-    messages = [
-        SystemMessage(content = "You are  a helpful assistance"),
-        HumanMessage(content = promt),
+
+    def generate_answer(self, query: str, context_docs: list):
+        """Generates an answer based on the provided documents."""
+        if not context_docs:
+            return {
+                "answer": "I'm sorry, I don't have enough information to answer that question accurately. Could you please rephrase or ask about something else?",
+                "sources": []
+            }
+
+        context_text = "\n\n".join([doc.page_content for doc in context_docs])
+        
+        prompt = f"""You are a professional hotel assistant. Answer the following question using ONLY the provided information. 
+        If the answer is not in the documents, state that you don't have enough information.
+        
+        QUESTION: {query}
+        
+        DOCUMENTS:
+        {context_text}
+        
+        Provide a polite, helpful, and concise answer.
+        """
+
+        messages = [
+            SystemMessage(content="You are a polite and professional hotel concierge assistant."),
+            HumanMessage(content=prompt),
         ]
-    result = llm.invoke(messages).content
-    return result
 
+        try:
+            response = self.llm.invoke(messages)
+            answer = response.content
+        except Exception as e:
+            answer = f"I'm sorry, I encountered an error while processing your request: {str(e)}"
 
+        # Extract unique sources
+        sources = list(set([doc.metadata.get("source", "Unknown") for doc in context_docs]))
+        
+        return {
+            "answer": answer,
+            "sources": sources
+        }
 
-query = "What time is check-in?"
-result = query_chroma(
-   query,
-    "/Users/lait-zet/Desktop/Hotel-AI-assistant-RaG/backend/chroma_db"
-)
+# Singleton instance for the application
+generator = None
 
-finale_answer = Handle_query(query, result)
-
-print(finale_answer)
+def get_generator():
+    global generator
+    if generator is None:
+        generator = HotelGenerator()
+    return generator

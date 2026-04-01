@@ -1,1 +1,4 @@
-data.env
+data
+.env
+chroma_db
+.venv
