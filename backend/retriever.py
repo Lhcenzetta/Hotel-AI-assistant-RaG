@@ -1,6 +1,6 @@
 from langchain_huggingface import HuggingFaceEmbeddings 
 from langchain_community.vectorstores import Chroma
-from backend.config import CHROMA_PATH, EMBEDDING_MODEL
+from config import CHROMA_PATH, EMBEDDING_MODEL
 
 class HotelRetriever:
     def __init__(self):

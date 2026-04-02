@@ -1,6 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
-from backend.config import LLM_MODEL, GOOGLE_API_KEY
+from config import LLM_MODEL, GOOGLE_API_KEY
 
 class HotelGenerator:
     def __init__(self):

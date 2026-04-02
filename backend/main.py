@@ -1,12 +1,22 @@
 import json
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
-from backend.config import DATA_DIR, HOST, PORT, DEBUG
-from backend.retriever import get_retriever
-from backend.generator import get_generator
+from config import DATA_DIR, HOST, PORT, DEBUG
+from retriever import get_retriever
+from generator import get_generator
 
 app = FastAPI(title="Hotel Assistant API", version="1.0.0")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For local development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Models
 class ChatRequest(BaseModel):
