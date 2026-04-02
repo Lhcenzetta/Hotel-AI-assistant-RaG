@@ -4,7 +4,7 @@ from pathlib import Path
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings 
 from langchain_community.vectorstores import Chroma
-from backend.config import DATA_DIR, CHROMA_PATH, EMBEDDING_MODEL
+from config import DATA_DIR, CHROMA_PATH, EMBEDDING_MODEL
 
 def load_json_file(path: Path) -> dict:
     if not path.exists():
