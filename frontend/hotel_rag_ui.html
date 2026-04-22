@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas AI — Hotel Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --sand:       #f5efe6;
+  --sand2:      #ede4d5;
+  --sand3:      #e0d3be;
+  --terracotta: #c2623f;
+  --terra-light:#e8866a;
+  --terra-dark: #8a3e24;
+  --saffron:    #d4882a;
+  --saff-light: #f0b455;
+  --teal:       #2a7a6a;
+  --teal-light: #4aab96;
+  --ink:        #1a1410;
+  --ink2:       #3d2e22;
+  --ink3:       #6b5444;
+  --cream:      #fdf8f2;
+  --white:      #ffffff;
+  --shadow:     rgba(26,20,16,0.12);
+  --shadow2:    rgba(26,20,16,0.06);
+
+  --display: 'Cormorant Garamond', serif;
+  --body:    'DM Sans', sans-serif;
+
+  --radius:  16px;
+  --radius-sm: 8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--body);
+  background: var(--sand);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* ── GEOMETRIC PATTERN OVERLAY ─────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c2623f' stroke-width='0.4' opacity='0.18'%3E%3Cpolygon points='30,2 58,16 58,44 30,58 2,44 2,16'/%3E%3Cpolygon points='30,10 50,20 50,40 30,50 10,40 10,20'/%3E%3Cline x1='30' y1='2' x2='30' y2='10'/%3E%3Cline x1='58' y1='16' x2='50' y2='20'/%3E%3Cline x1='58' y1='44' x2='50' y2='40'/%3E%3Cline x1='30' y1='58' x2='30' y2='50'/%3E%3Cline x1='2' y1='44' x2='10' y2='40'/%3E%3Cline x1='2' y1='16' x2='10' y2='20'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 100vh;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────────── */
+.sidebar {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c2623f' stroke-width='0.3' opacity='0.25'%3E%3Cpolygon points='20,1 39,11 39,29 20,39 1,29 1,11'/%3E%3Cpolygon points='20,7 33,14 33,26 20,33 7,26 7,14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.sidebar-header {
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.logo {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--sand);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+.logo span {
+  color: var(--terracotta);
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  font-family: var(--body);
+  color: rgba(245,239,230,0.35);
+}
+
+.nav {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  flex: 1;
+}
+
+.nav-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,239,230,0.25);
+  padding: 0 0.5rem;
+  margin-bottom: 6px;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+  color: rgba(245,239,230,0.5);
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-item:hover { background: rgba(245,239,230,0.06); color: var(--sand); }
+
+.nav-item.active {
+  background: rgba(194,98,63,0.2);
+  color: var(--terra-light);
+  font-weight: 500;
+}
+
+.nav-item.active .nav-icon { color: var(--terracotta); }
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.sidebar-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+}
+
+.hotel-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotel-dot {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--terracotta), var(--saffron));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.hotel-name { font-size: 13px; font-weight: 500; color: var(--sand); line-height: 1.3; }
+.hotel-stars { font-size: 10px; color: var(--saffron); letter-spacing: 1px; }
+
+/* ── MAIN ─────────────────────────────────────────────────── */
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+/* ── TOPBAR ─────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--sand3);
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.topbar-title span { color: var(--terracotta); }
+
+.api-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink3);
+  background: var(--sand2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: var(--body);
+}
+
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #aaa;
+  transition: background 0.3s;
+}
+.status-dot.online  { background: #4caf82; box-shadow: 0 0 6px #4caf82; }
+.status-dot.offline { background: #e55; }
+.status-dot.loading { background: var(--saffron); animation: blink 1s infinite; }
+
+/* ── VIEWS ─────────────────────────────────────────────── */
+.view { display: none; flex: 1; overflow: hidden; flex-direction: column; }
+.view.active { display: flex; }
+
+/* ── GUEST CHAT VIEW ─────────────────────────────────────── */
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  scroll-behavior: smooth;
+}
+
+.chat-container::-webkit-scrollbar { width: 4px; }
+.chat-container::-webkit-scrollbar-track { background: transparent; }
+.chat-container::-webkit-scrollbar-thumb { background: var(--sand3); border-radius: 4px; }
+
+/* Welcome card */
+.welcome-card {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+  border-radius: var(--radius);
+  padding: 2rem;
+  color: var(--sand);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease both;
+}
+
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c2623f' stroke-width='0.5' opacity='0.3'%3E%3Cpolygon points='25,2 48,14 48,36 25,48 2,36 2,14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.welcome-ornament {
+  font-size: 36px;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.welcome-title {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.welcome-sub {
+  font-size: 13px;
+  color: rgba(245,239,230,0.6);
+  line-height: 1.6;
+  position: relative;
+}
+
+.suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.25rem;
+  position: relative;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: rgba(245,239,230,0.1);
+  border: 1px solid rgba(245,239,230,0.2);
+  color: rgba(245,239,230,0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--body);
+}
+
+.chip:hover {
+  background: rgba(194,98,63,0.3);
+  border-color: var(--terracotta);
+  color: var(--sand);
+}
+
+/* Messages */
+.message {
+  display: flex;
+  gap: 10px;
+  animation: slideUp 0.3s ease both;
+  max-width: 80%;
+}
+
+.message.user { align-self: flex-end; flex-direction: row-reverse; }
+.message.assistant { align-self: flex-start; }
+
+.msg-avatar {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.message.user .msg-avatar {
+  background: var(--terracotta);
+  color: white;
+  font-family: var(--display);
+  font-weight: 700;
+}
+
+.message.assistant .msg-avatar {
+  background: var(--ink);
+  color: var(--sand);
+  font-family: var(--display);
+  font-weight: 700;
+}
+
+.msg-bubble {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.message.user .msg-bubble {
+  background: var(--terracotta);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant .msg-bubble {
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--sand3);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px var(--shadow2);
+}
+
+.msg-sources {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.source-tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--sand2);
+  color: var(--ink3);
+  border: 1px solid var(--sand3);
+  font-family: var(--body);
+}
+
+/* Typing indicator */
+.typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.typing span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--sand3);
+  animation: bounce 1.2s infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Chat input */
+.chat-input-area {
+  padding: 1.25rem 2rem;
+  background: var(--white);
+  border-top: 1px solid var(--sand3);
+  flex-shrink: 0;
+}
+
+.chat-input-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  background: var(--sand2);
+  border: 1.5px solid var(--sand3);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+}
+
+.chat-input-wrap:focus-within {
+  border-color: var(--terracotta);
+  background: var(--white);
+}
+
+.chat-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink);
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  min-height: 24px;
+  max-height: 100px;
+}
+
+.chat-input::placeholder { color: var(--ink3); opacity: 0.6; }
+
+.send-btn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--terracotta);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.1s;
+  color: white;
+}
+
+.send-btn:hover { background: var(--terra-dark); }
+.send-btn:active { transform: scale(0.95); }
+.send-btn:disabled { background: var(--sand3); cursor: not-allowed; }
+
+.lang-selector {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+}
+
+.lang-btn {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--sand3);
+  background: transparent;
+  color: var(--ink3);
+  cursor: pointer;
+  font-family: var(--body);
+  transition: all 0.15s;
+}
+
+.lang-btn.active {
+  background: var(--terracotta);
+  color: white;
+  border-color: var(--terracotta);
+}
+
+/* ── STAFF DASHBOARD VIEW ─────────────────────────────────── */
+.dashboard {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dashboard::-webkit-scrollbar { width: 4px; }
+.dashboard::-webkit-scrollbar-thumb { background: var(--sand3); border-radius: 4px; }
+
+.dash-search-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  border: 1px solid var(--sand3);
+  animation: slideUp 0.4s ease both;
+}
+
+.dash-search-title {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.dash-search-sub {
+  font-size: 13px;
+  color: var(--ink3);
+  margin-bottom: 1.25rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--sand3);
+  background: var(--sand2);
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--terracotta);
+  background: var(--white);
+}
+
+.search-btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  background: var(--terracotta);
+  color: white;
+  border: none;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-btn:hover { background: var(--terra-dark); }
+.search-btn:disabled { background: var(--sand3); cursor: not-allowed; }
+
+.quick-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.filter-btn {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--sand3);
+  background: var(--sand2);
+  color: var(--ink3);
+  cursor: pointer;
+  font-family: var(--body);
+  transition: all 0.15s;
+}
+
+.filter-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+/* Results */
+.results-section { display: flex; flex-direction: column; gap: 10px; }
+
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink3);
+  font-family: var(--body);
+}
+
+.results-count {
+  font-weight: 500;
+  color: var(--terracotta);
+}
+
+.result-card {
+  background: var(--white);
+  border: 1px solid var(--sand3);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  animation: slideUp 0.3s ease both;
+  border-left: 3px solid transparent;
+}
+
+.result-card:hover {
+  border-color: var(--sand3);
+  border-left-color: var(--terracotta);
+  box-shadow: 0 4px 16px var(--shadow);
+  transform: translateX(3px);
+}
+
+.result-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.result-title {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.result-score {
+  font-size: 11px;
+  font-family: var(--body);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.score-high { background: rgba(42,122,106,0.12); color: var(--teal); }
+.score-mid  { background: rgba(212,136,42,0.12); color: var(--saffron); }
+.score-low  { background: var(--sand2); color: var(--ink3); }
+
+.result-text {
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.result-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.result-source {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--sand2);
+  color: var(--ink3);
+  border: 1px solid var(--sand3);
+  font-family: var(--body);
+}
+
+.result-source.rooms    { background: rgba(212,136,42,0.1); color: var(--saffron); border-color: rgba(212,136,42,0.2); }
+.result-source.services { background: rgba(42,122,106,0.1); color: var(--teal);    border-color: rgba(42,122,106,0.2); }
+.result-source.faqs     { background: rgba(194,98,63,0.1);  color: var(--terracotta); border-color: rgba(194,98,63,0.2); }
+.result-source.knowledge_base { background: rgba(26,20,16,0.06); color: var(--ink2); border-color: var(--sand3); }
+
+/* Empty / loading states */
+.state-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--ink3);
+  font-size: 14px;
+  gap: 10px;
+  text-align: center;
+}
+
+.state-icon { font-size: 36px; opacity: 0.4; }
+.state-text { font-size: 14px; }
+.state-sub  { font-size: 12px; opacity: 0.7; }
+
+/* ── STATS CARDS ─────────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  animation: slideUp 0.4s 0.1s ease both;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--sand3);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.stat-icon.orange { background: rgba(194,98,63,0.1); }
+.stat-icon.teal   { background: rgba(42,122,106,0.1); }
+.stat-icon.gold   { background: rgba(212,136,42,0.1); }
+
+.stat-num { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); }
+.stat-lbl { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+
+/* ── ERROR TOAST ─────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--ink);
+  color: var(--sand);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  z-index: 100;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.3s;
+  max-width: 320px;
+  border-left: 3px solid var(--terracotta);
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────── */
+* { scrollbar-width: thin; scrollbar-color: var(--sand3) transparent; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .stats-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ── SIDEBAR ──────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">Atlas <span>AI</span></div>
+      <div class="logo-sub">Hotel Intelligence</div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-label">Interface</div>
+
+      <button class="nav-item active" onclick="switchView('guest')" id="nav-guest">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Guest Chat
+      </button>
+
+      <button class="nav-item" onclick="switchView('staff')" id="nav-staff">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        Staff Search
+      </button>
+
+      <div class="nav-label" style="margin-top:1rem">System</div>
+
+      <button class="nav-item" onclick="checkAPI()">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        API Status
+      </button>
+
+      <button class="nav-item" onclick="clearAll()">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+        </svg>
+        Clear History
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="hotel-badge">
+        <div class="hotel-dot">H</div>
+        <div>
+          <div class="hotel-name">Your Hotel Name</div>
+          <div class="hotel-stars">★★★★</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ──────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">
+        Guest <span>Chat</span>
+      </div>
+      <div class="api-status">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-text">Checking API…</span>
+      </div>
+    </div>
+
+    <!-- ── GUEST CHAT VIEW ─────────────────────────────────── -->
+    <div class="view active" id="view-guest">
+
+      <div class="chat-container" id="chat-messages">
+        <!-- Welcome card -->
+        <div class="welcome-card">
+          <div class="welcome-ornament">✦</div>
+          <div class="welcome-title">Marhaba — Welcome</div>
+          <div class="welcome-sub">
+            I'm your personal hotel assistant. Ask me anything about rooms, services,
+            spa treatments, dining, or local attractions. I'm here 24/7.
+          </div>
+          <div class="suggestion-chips">
+            <div class="chip" onclick="sendChip(this)">What rooms are available?</div>
+            <div class="chip" onclick="sendChip(this)">Tell me about the spa</div>
+            <div class="chip" onclick="sendChip(this)">What's the check-in time?</div>
+            <div class="chip" onclick="sendChip(this)">Breakfast included?</div>
+            <div class="chip" onclick="sendChip(this)">Local attractions nearby</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="lang-selector">
+          <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
+          <button class="lang-btn" onclick="setLang('fr', this)">FR</button>
+          <button class="lang-btn" onclick="setLang('ar', this)">AR</button>
+        </div>
+        <div class="chat-input-wrap">
+          <textarea
+            class="chat-input"
+            id="chat-input"
+            placeholder="Ask anything about the hotel…"
+            rows="1"
+            onkeydown="handleKey(event)"
+            oninput="autoResize(this)"
+          ></textarea>
+          <button class="send-btn" id="send-btn" onclick="sendMessage()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAFF DASHBOARD VIEW ───────────────────────────── -->
+    <div class="view" id="view-staff">
+      <div class="dashboard">
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon orange">🏨</div>
+            <div>
+              <div class="stat-num" id="stat-docs">—</div>
+              <div class="stat-lbl">Knowledge chunks</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon teal">🔍</div>
+            <div>
+              <div class="stat-num" id="stat-searches">0</div>
+              <div class="stat-lbl">Searches today</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon gold">⚡</div>
+            <div>
+              <div class="stat-num" id="stat-speed">—</div>
+              <div class="stat-lbl">Avg. response (ms)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-search-section">
+          <div class="dash-search-title">Staff Knowledge Search</div>
+          <div class="dash-search-sub">Search across all hotel data instantly — rooms, services, policies, FAQs</div>
+          <div class="search-bar">
+            <input
+              type="text"
+              class="search-input"
+              id="staff-input"
+              placeholder="e.g. spa package prices, room upgrade policy…"
+              onkeydown="if(event.key==='Enter') staffSearch()"
+            >
+            <button class="search-btn" id="staff-btn" onclick="staffSearch()">Search</button>
+          </div>
+          <div class="quick-filters">
+            <button class="filter-btn" onclick="quickSearch('room prices and availability')">Rooms</button>
+            <button class="filter-btn" onclick="quickSearch('spa treatments and prices')">Spa</button>
+            <button class="filter-btn" onclick="quickSearch('breakfast and dining options')">Dining</button>
+            <button class="filter-btn" onclick="quickSearch('check-in check-out policy')">Policies</button>
+            <button class="filter-btn" onclick="quickSearch('local attractions agadir')">Attractions</button>
+            <button class="filter-btn" onclick="quickSearch('airport transfer and transport')">Transport</button>
+          </div>
+        </div>
+
+        <div id="staff-results">
+          <div class="state-msg">
+            <div class="state-icon">🔍</div>
+            <div class="state-text">Search your hotel knowledge base</div>
+            <div class="state-sub">Type a query above or use a quick filter</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────────
+const API_BASE = 'http://localhost:8000';
+const SEARCH_ENDPOINT = `${API_BASE}/search`;
+
+// ── STATE ──────────────────────────────────────────────────
+let currentLang = 'en';
+let searchCount = 0;
+let totalSpeed  = 0;
+let speedCount  = 0;
+let isSending   = false;
+
+const langPlaceholders = {
+  en: 'Ask anything about the hotel…',
+  fr: 'Posez une question sur l\'hôtel…',
+  ar: 'اسأل عن الفندق…',
+};
+
+// ── API ────────────────────────────────────────────────────
+async function callSearch(query) {
+  const t0 = performance.now();
+  const res = await fetch(SEARCH_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) throw new Error(`API error ${res.status}`);
+  const data = await res.json();
+  const ms = Math.round(performance.now() - t0);
+  return { data, ms };
+}
+
+// ── API STATUS CHECK ───────────────────────────────────────
+async function checkAPI() {
+  const dot  = document.getElementById('status-dot');
+  const text = document.getElementById('status-text');
+  dot.className  = 'status-dot loading';
+  text.textContent = 'Checking…';
+  try {
+    await fetch(`${API_BASE}/`, { method: 'GET', signal: AbortSignal.timeout(3000) });
+    dot.className  = 'status-dot online';
+    text.textContent = 'API online';
+    document.getElementById('stat-docs').textContent = '185';
+  } catch {
+    dot.className  = 'status-dot offline';
+    text.textContent = 'API offline';
+    showToast('Cannot reach API at ' + API_BASE + '. Make sure FastAPI is running.');
+  }
+}
+
+// ── VIEWS ──────────────────────────────────────────────────
+function switchView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+
+  const titles = { guest: 'Guest <span>Chat</span>', staff: 'Staff <span>Search</span>' };
+  document.getElementById('topbar-title').innerHTML = titles[name];
+}
+
+// ── LANGUAGE ───────────────────────────────────────────────
+function setLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('chat-input').placeholder = langPlaceholders[lang] || langPlaceholders.en;
+}
+
+// ── CHAT ───────────────────────────────────────────────────
+function sendChip(el) {
+  document.getElementById('chat-input').value = el.textContent;
+  sendMessage();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+async function sendMessage() {
+  if (isSending) return;
+  const input = document.getElementById('chat-input');
+  const query = input.value.trim();
+  if (!query) return;
+
+  isSending = true;
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('send-btn').disabled = true;
+
+  appendMessage('user', query);
+
+  const typing = appendTyping();
+
+  try {
+    const { data, ms } = await callSearch(query);
+    typing.remove();
+    const results = normalizeResults(data);
+    const answer  = buildAnswer(results, query);
+    appendMessage('assistant', answer, results);
+    updateSpeed(ms);
+  } catch (err) {
+    typing.remove();
+    appendMessage('assistant', 'Sorry, I could not reach the hotel system right now. Please try again in a moment.');
+    showToast('API error: ' + err.message);
+  }
+
+  isSending = false;
+  document.getElementById('send-btn').disabled = false;
+  input.focus();
+}
+
+function normalizeResults(data) {
+  // Handle various response shapes from FastAPI
+  if (Array.isArray(data)) return data;
+  if (data.results) return data.results;
+  if (data.data)    return data.data;
+  return [];
+}
+
+function buildAnswer(results, query) {
+  if (!results.length) return "I couldn't find specific information about that. Please ask the front desk for assistance.";
+  const top = results.slice(0, 3);
+  const texts = top.map(r => r.text || r.content || r.answer || '').filter(Boolean);
+  if (!texts.length) return "I found some related information but couldn't format a clear answer. Please speak with our staff.";
+  return texts[0].length > 300 ? texts[0].slice(0, 300) + '…' : texts[0];
+}
+
+function appendMessage(role, text, results = []) {
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = `message ${role}`;
+
+  const initials = role === 'user' ? 'G' : 'AI';
+  let sourcesHtml = '';
+
+  if (results.length) {
+    const sources = [...new Set(results.map(r => r.source || r.type || '').filter(Boolean))];
+    if (sources.length) {
+      sourcesHtml = `<div class="msg-sources">${sources.map(s =>
+        `<span class="source-tag">${s}</span>`).join('')}</div>`;
+    }
+  }
+
+  div.innerHTML = `
+    <div class="msg-avatar">${initials}</div>
+    <div class="msg-bubble">${escHtml(text)}${sourcesHtml}</div>
+  `;
+
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+
+function appendTyping() {
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.innerHTML = `
+    <div class="msg-avatar">AI</div>
+    <div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return div;
+}
+
+// ── STAFF SEARCH ───────────────────────────────────────────
+function quickSearch(q) {
+  document.getElementById('staff-input').value = q;
+  staffSearch();
+}
+
+async function staffSearch() {
+  const input = document.getElementById('staff-input');
+  const query = input.value.trim();
+  if (!query) return;
+
+  const btn = document.getElementById('staff-btn');
+  btn.disabled = true;
+  btn.textContent = 'Searching…';
+
+  const resultsEl = document.getElementById('staff-results');
+  resultsEl.innerHTML = `<div class="state-msg"><div class="state-icon">⏳</div><div class="state-text">Searching knowledge base…</div></div>`;
+
+  searchCount++;
+  document.getElementById('stat-searches').textContent = searchCount;
+
+  try {
+    const { data, ms } = await callSearch(query);
+    const results = normalizeResults(data);
+    renderStaffResults(results, query, ms);
+    updateSpeed(ms);
+  } catch (err) {
+    resultsEl.innerHTML = `<div class="state-msg"><div class="state-icon">❌</div><div class="state-text">Could not reach API</div><div class="state-sub">${escHtml(err.message)}</div></div>`;
+    showToast('API error: ' + err.message);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Search';
+}
+
+function renderStaffResults(results, query, ms) {
+  const el = document.getElementById('staff-results');
+  if (!results.length) {
+    el.innerHTML = `<div class="state-msg"><div class="state-icon">🔍</div><div class="state-text">No results found for "${escHtml(query)}"</div><div class="state-sub">Try different keywords</div></div>`;
+    return;
+  }
+
+  const header = `<div class="results-header"><span><span class="results-count">${results.length} results</span> for "${escHtml(query)}"</span><span>${ms}ms</span></div>`;
+  const cards  = results.map((r, i) => resultCard(r, i)).join('');
+  el.innerHTML = `<div class="results-section">${header}${cards}</div>`;
+}
+
+function resultCard(r, i) {
+  const score  = r.score ?? r.similarity ?? r.relevance ?? null;
+  const source = r.source || r.type || r.category || 'general';
+  const title  = r.title || r.id || `Result ${i + 1}`;
+  const text   = r.text || r.content || r.answer || r.description || '';
+  const preview = text.length > 220 ? text.slice(0, 220) + '…' : text;
+
+  let scoreBadge = '';
+  if (score !== null) {
+    const pct = Math.round(score * 100);
+    const cls = pct > 70 ? 'score-high' : pct > 45 ? 'score-mid' : 'score-low';
+    scoreBadge = `<span class="result-score ${cls}">${pct}% match</span>`;
+  }
+
+  return `
+    <div class="result-card" style="animation-delay:${i * 0.05}s">
+      <div class="result-top">
+        <div class="result-title">${escHtml(title)}</div>
+        ${scoreBadge}
+      </div>
+      <div class="result-text">${escHtml(preview)}</div>
+      <div class="result-meta">
+        <span class="result-source ${source}">${source}</span>
+      </div>
+    </div>
+  `;
+}
+
+// ── UTILS ──────────────────────────────────────────────────
+function updateSpeed(ms) {
+  totalSpeed += ms;
+  speedCount++;
+  document.getElementById('stat-speed').textContent = Math.round(totalSpeed / speedCount);
+}
+
+function clearAll() {
+  const container = document.getElementById('chat-messages');
+  // Keep only the welcome card (first child)
+  while (container.children.length > 1) container.lastChild.remove();
+  showToast('Chat history cleared');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ── INIT ───────────────────────────────────────────────────
+checkAPI();
+</script>
+</body>
+</html>

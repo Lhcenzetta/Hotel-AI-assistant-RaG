@@ -1,14 +1,14 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
 from config import LLM_MODEL, GOOGLE_API_KEY
-
+from langchain_community.chat_models import ChatOllama
+from retriever import HotelRetriever
 class HotelGenerator:
     def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(
-            model=LLM_MODEL,
-            google_api_key=GOOGLE_API_KEY,
-            temperature=0,
-        )
+        self.llm = ChatOllama(
+    model="mistral",  # or llama3
+    temperature=0.3
+)
 
     def generate_answer(self, query: str, context_docs: list):
         """Generates an answer based on the provided documents."""
@@ -58,3 +58,9 @@ def get_generator():
     if generator is None:
         generator = HotelGenerator()
     return generator
+
+query1 = "when is check in?"
+hotel_tool = HotelRetriever()
+result = hotel_tool.query(query1)
+answer = HotelGenerator().generate_answer(query1, result)
+print(answer["answer"])
