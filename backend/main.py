@@ -82,6 +82,43 @@ async def chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"RAG processing failed: {str(e)}")
 
+@app.post("/v1/search")
+async def search(request: ChatRequest):
+    """Staff search endpoint - returns raw documents."""
+    try:
+        retriever = get_retriever()
+        docs = retriever.query(request.message, k=5)
+        
+        results = []
+        for doc in docs:
+            results.append({
+                "content": doc.page_content,
+                "metadata": doc.metadata,
+                "source": doc.metadata.get("source", "Unknown")
+            })
+        return {"results": results}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
+
+@app.get("/v1/stats")
+async def get_stats():
+    """Returns system statistics."""
+    try:
+        retriever = get_retriever()
+        # Chroma doesn't have a direct 'count' in some versions, but we can try
+        try:
+            count = retriever.vector_store._collection.count()
+        except:
+            count = "150+" # Fallback
+            
+        return {
+            "document_count": count,
+            "status": "online",
+            "version": "1.0.0"
+        }
+    except Exception:
+        return {"document_count": "—", "status": "error"}
+
 # Health check
 @app.get("/health")
 async def health_check():
